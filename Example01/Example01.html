@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Example01</title>
+	<script type="text/javascript">
+		var XMLHttpRequestObject = null;
+	
+
+		function initXMLHttpRequest()
+		{
+			if (window.XMLHttpRequest){
+			//IE 7.0 upper, Safari, FireFox
+				XMLHttpRequestObject = new XMLHttpRequest();
+				console.log("init XMLHttpRequest");
+			}else if (window.ActiveXObject){
+				//IE 5.0, 6.0
+				XMLHttpRequestObject = new ActiveXObject("Microsoft.XMLHTTP");
+				console.log("init ActiveXObject");
+
+			}
+		} 	
+		
+		function sendRequest(url)
+		{
+			if (XMLHttpRequestObject)
+			{
+				XMLHttpRequestObject.open("GET",url,true);
+				XMLHttpRequestObject.onreadystatechange = onCallback;
+				XMLHttpRequestObject.send();
+				console.log("send request");
+			}
+		}
+
+		function onCallback(){
+			if (XMLHttpRequestObject.readyState == 4) {
+				if (XMLHttpRequestObject.status == 200){
+					var r = document.getElementById("result");
+					r.innerHTML = XMLHttpRequestObject.responseText;
+					console.log("get respone");
+				}
+				else {
+					alert('Lỗi: ' + XMLHttpRequestObject.status);
+					console.log("get respone error");
+				}
+			}
+		}
+
+		window.onload = function() {   
+            initXMLHttpRequest();   
+            sendRequest("Example01Data.html");
+        }   
+	</script>
+</head>
+<body>
+	<div id="result"></div>
+</body>
+</html>
