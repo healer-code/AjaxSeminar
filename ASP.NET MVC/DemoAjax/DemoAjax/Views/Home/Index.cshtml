@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Welcome to Ajax world</h2>
+
+<div id="divValue">
+    <p>Content Change: </p>
+    <div id="curValue">..Xin chào..</div>
+</div>
+<div id="result"></div><br/>
+
+<ul class="case">
+    <li>
+        <button type="button" id="btnSubmit">Get Text </button>
+        <span>Get string text using Ajax - Asynchoronous</span>
+        <div></div>
+    </li>
+    <li>
+        <button type="button" id="btnSubmitXML">Get XML </button>
+        <span>Get XML using Ajax</span>
+    </li>
+    <li>
+        <button type="button" id="btnSubmitNoneAsync">Get Text </button>
+        <span>Get string text using Ajax - Synchoronous</span>
+    </li>
+    <li>
+        <button type="button" id="btnPost">Post Text</button>
+        <span>Post data to server</span>
+        <input type="text" id="txtText"/>
+    </li>
+</ul>
+
+<script src="@Url.Content("~/Content/example01.js")"></script>
+
+<style>
+    #curValue{
+        color :red;
+    }
+    ul.case {
+        width :600px;
+        border: 1px solid black;
+        border-radius:20px;
+        padding:10px;
+    }
+    ul.case li{
+        list-style:none;
+        list-style-type:none;
+        margin-bottom :5px;
+    }
+</style>
